@@ -52,7 +52,7 @@ RHS$T2[ii_,f_,\[Theta]a_,\[Theta]f_]:=-((2*Tr[\[DoubleStruckCapitalW][ii,f,\[The
 MaxValue[{h[\[Theta]a,\[Theta]f],0<\[Theta]a\[LessEqual]\[Pi],0<\[Theta]f\[LessEqual]\[Pi]}, {\[Theta]a,\[Theta]f}]*)
 
 
-DensityPlot[h[\[Theta]a*Pi,\[Theta]f*Pi], {\[Theta]a,0,1}, {\[Theta]f,0.45,0.55}, 
+Plot3D[h[\[Theta]a*Pi,\[Theta]f*Pi], {\[Theta]a,0,1}, {\[Theta]f,0.45,0.55}, 
 LabelStyle-> Large, AxesLabel->{Subscript[\[Theta],"a"],Subscript[\[Theta],f],"RHS"}]
 (*Plot3D[RHS$T1[1,-1,\[Theta]a*Pi,\[Theta]f*Pi], {\[Theta]a,0,1}, {\[Theta]f,0.45,0.55}, 
 LabelStyle\[Rule] Large, AxesLabel\[Rule]{Subscript[\[Theta],"a"],Subscript[\[Theta],f],"Subscript[RHS^(T1), 1,-1 ] "}]*)
@@ -63,9 +63,10 @@ LabelStyle\[Rule] Large, AxesLabel\[Rule]{Subscript[\[Theta],"a"],Subscript[\[Th
 
 
 
-Plot[h[x*Pi,(0.5+0/15) Pi],{x,0,2},AxesLabel->{"\!\(\*SubscriptBox[\(\[Theta]\), \(a\)]\)/\[Pi]","RHS"},LabelStyle->Large]
+Plot[h[0.3*Pi,x  Pi],{x,0,2},AxesLabel->{"\!\(\*SubscriptBox[\(\[Theta]\), \(a\)]\)/\[Pi]","RHS"},LabelStyle->Large]
 
 
+(* Calculations from 05/22/19 report*)
 a=0;
 mx = MaxValue[ h[x*Pi,(0.5 +a/15)Pi], x]
 mn = MinValue[ h[x*Pi,(0.5 +a/15)Pi], x]

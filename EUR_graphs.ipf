@@ -480,4 +480,114 @@ Window Gizmo_RHS_LHS() : GizmoPlot
 	ModifyGizmo infoWindow={5,23,822,320}
 	ModifyGizmo endRecMacro
 	ModifyGizmo idleEventQuaternion={3.57739e-05,2.85224e-05,9.77739e-06,1}
+	
+		NewGizmo/W=(46,273,561,733)
+	ModifyGizmo startRecMacro=700
+	ModifyGizmo scalingOption=63
+	AppendToGizmo Surface=root:lhs_rhs_diff,name=surface0
+	ModifyGizmo ModifyObject=surface0,objectType=surface,property={ srcMode,0}
+	ModifyGizmo ModifyObject=surface0,objectType=surface,property={ surfaceCTab,Rainbow}
+	AppendToGizmo Axes=boxAxes,name=axes0
+	ModifyGizmo ModifyObject=axes0,objectType=Axes,property={0,axisRange,-1,-1,-1,1,-1,-1}
+	ModifyGizmo ModifyObject=axes0,objectType=Axes,property={1,axisRange,-1,-1,-1,-1,1,-1}
+	ModifyGizmo ModifyObject=axes0,objectType=Axes,property={2,axisRange,-1,-1,-1,-1,-1,1}
+	ModifyGizmo ModifyObject=axes0,objectType=Axes,property={3,axisRange,-1,1,-1,-1,1,1}
+	ModifyGizmo ModifyObject=axes0,objectType=Axes,property={4,axisRange,1,1,-1,1,1,1}
+	ModifyGizmo ModifyObject=axes0,objectType=Axes,property={5,axisRange,1,-1,-1,1,-1,1}
+	ModifyGizmo ModifyObject=axes0,objectType=Axes,property={6,axisRange,-1,-1,1,-1,1,1}
+	ModifyGizmo ModifyObject=axes0,objectType=Axes,property={7,axisRange,1,-1,1,1,1,1}
+	ModifyGizmo ModifyObject=axes0,objectType=Axes,property={8,axisRange,1,-1,-1,1,1,-1}
+	ModifyGizmo ModifyObject=axes0,objectType=Axes,property={9,axisRange,-1,1,-1,1,1,-1}
+	ModifyGizmo ModifyObject=axes0,objectType=Axes,property={10,axisRange,-1,1,1,1,1,1}
+	ModifyGizmo ModifyObject=axes0,objectType=Axes,property={11,axisRange,-1,-1,1,1,-1,1}
+	ModifyGizmo ModifyObject=axes0,objectType=Axes,property={-1,axisScalingMode,1}
+	ModifyGizmo ModifyObject=axes0,objectType=Axes,property={-1,axisColor,0,0,0,1}
+	ModifyGizmo ModifyObject=axes0,objectType=Axes,property={0,ticks,3}
+	ModifyGizmo ModifyObject=axes0,objectType=Axes,property={1,ticks,3}
+	ModifyGizmo ModifyObject=axes0,objectType=Axes,property={2,ticks,3}
+	ModifyGizmo ModifyObject=axes0,objectType=Axes,property={0,axisLabel,1}
+	ModifyGizmo ModifyObject=axes0,objectType=Axes,property={1,axisLabel,1}
+	ModifyGizmo ModifyObject=axes0,objectType=Axes,property={2,axisLabel,1}
+	ModifyGizmo ModifyObject=axes0,objectType=Axes,property={0,axisLabelText,"\\Z20\\[0\r\rθ\\Ba\\M/π\n\\[0"}
+	ModifyGizmo ModifyObject=axes0,objectType=Axes,property={1,axisLabelText,"\\Z20\\[0\nθ\\Ba\\M/π\n\\[0"}
+	ModifyGizmo ModifyObject=axes0,objectType=Axes,property={2,axisLabelText,"\\Z20\rLHS-RHS\r"}
+	ModifyGizmo ModifyObject=axes0,objectType=Axes,property={0,axisLabelDistance,0}
+	ModifyGizmo ModifyObject=axes0,objectType=Axes,property={1,axisLabelDistance,0}
+	ModifyGizmo ModifyObject=axes0,objectType=Axes,property={2,axisLabelDistance,0}
+	ModifyGizmo ModifyObject=axes0,objectType=Axes,property={0,axisLabelRGBA,0,0,0,1}
+	ModifyGizmo ModifyObject=axes0,objectType=Axes,property={1,axisLabelRGBA,0,0,0,1}
+	ModifyGizmo ModifyObject=axes0,objectType=Axes,property={2,axisLabelRGBA,0,0,0,1}
+	ModifyGizmo ModifyObject=axes0,objectType=Axes,property={0,labelBillboarding,1}
+	ModifyGizmo ModifyObject=axes0,objectType=Axes,property={1,labelBillboarding,1}
+	ModifyGizmo ModifyObject=axes0,objectType=Axes,property={2,labelBillboarding,1}
+	ModifyGizmo modifyObject=axes0,objectType=Axes,property={-1,Clipped,0}
+	ModifyGizmo setDisplayList=0, object=surface0
+	ModifyGizmo setDisplayList=1, object=axes0
+	ModifyGizmo autoscaling=1
+	ModifyGizmo currentGroupObject=""
+	ModifyGizmo endRecMacro
+	ModifyGizmo SETQUATERNION={0.495088,-0.300891,-0.444653,0.683113}
+EndMacro
+
+
+Window graph_amplitude_vs_snr() : Graph
+	PauseUpdate; Silent 1		// building window...
+	Display /W=(447,175,842,383) rhs_vs_thetaA,fit_rhs_vs_thetaA
+	ModifyGraph mode(rhs_vs_thetaA)=3
+	ModifyGraph lStyle(fit_rhs_vs_thetaA)=3
+	ModifyGraph rgb(rhs_vs_thetaA)=(4369,4369,4369)
+	ModifyGraph msize(rhs_vs_thetaA)=5
+	Label left "\\Z20 RHS"
+	Label bottom "\\Z20\\[0\nθ\\Ba\\M/π\n\\[0"
+	SetAxis left 6.2,7
+	TextBox/C/N=t0/X=2.03/Y=-1.48 "\\Z20\\[0\nθ\\Bf\\M=π/2\n\\[0"
+	Tag/C/N=text0/F=0/H=4/A=MB/X=0.00/Y=30.00/L=4/TL={len=0.5,fat=1,sharp=1,frame=3,lThick=2,lineRGB=(64383,0,0)} rhs_vs_thetaA, 0.239999999999999991
+	AppendText "\\K(60000,5000,5000)\\Z18Amplitude\r"
+	Tag/C/N=text1/F=0/H=4/B=1/A=LB/X=0.00/Y=-45.00/L=3 rhs_vs_thetaA, 1.40000000000000013, "\\Z18 Average"
+
+	Display /W=(441,406,974,664)
+	AppendImage/T rhs_vs_thetaA_vs_snr
+	ModifyImage rhs_vs_thetaA_vs_snr ctab= {5,*,RedWhiteBlue256,0}
+	ModifyGraph margin(left)=47,margin(bottom)=14,margin(top)=44,margin(right)=14
+	ModifyGraph mirror=2
+	ModifyGraph nticks(left)=4,nticks(top)=3
+	ModifyGraph minor=1
+	ModifyGraph fSize=15
+	ModifyGraph standoff=0
+	ModifyGraph tkLblRot(left)=90
+	ModifyGraph btLen=3
+	ModifyGraph tlOffset=-2
+	Label left "\\Z20\\[0\nθ\\Ba\\M/π\n\\[0"
+	Label top "\\Z20 Proj. SNR"
+	SetAxis/A/R left
+	ColorScale/C/N=text0/A=MC/X=35.17/Y=-30.50 image=rhs_vs_thetaA_vs_snr, vert=0
+	ColorScale/C/N=text0 width=100
+	AppendText "\\Z20 RHS [bits]"
+	TextBox/C/N=t0/X=82.84/Y=0.50 "\\Z20\\[0\nθ\\Bf\\M = π/2\n\\[0"
+
+	Display /W=(34,376,429,584) amp_vs_snr
+	AppendToGraph/R base_vs_snr
+	ModifyGraph mode=3
+	ModifyGraph marker=19
+	ModifyGraph rgb(amp_vs_snr)=(60000,5000,5000),rgb(base_vs_snr)=(0,0,0)
+	ModifyGraph msize=5
+	Label left "\\Z20\\K(60000,5000,5000) Amplitude"
+	Label right "\\Z20\\K(0000,0000,0000) Average"
+	ErrorBars amp_vs_snr Y,wave=(amp_vs_snr_err,amp_vs_snr_err)
+	ErrorBars base_vs_snr Y,wave=(base_vs_snr_err,base_vs_snr_err)
+	ShowInfo
+EndMacro
+
+Window graph_infidelity_vs_snr() : Graph
+	PauseUpdate; Silent 1		// building window...
+	Display /W=(586,184,1122,457) infidelity_vs_snr
+	ModifyGraph mode=3
+	ModifyGraph marker=42
+	ModifyGraph msize=4
+	ModifyGraph log(left)=1
+	ModifyGraph fSize=12
+	Label left "\\Z20Infidelity"
+	Label bottom "\\Z20Strong SNR"
+	Cursor/P A infidelity_vs_snr 5
+	ShowInfo
 EndMacro
