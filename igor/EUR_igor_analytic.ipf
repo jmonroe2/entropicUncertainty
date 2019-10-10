@@ -69,3 +69,19 @@ function calc_RHS_analytic(ii,ff,theta_a, theta_f,dtOverTau,l)
 	return term1 + term2
 end //RHS
 	
+	
+function make_thy_lhs_proj()
+	// follows Maassen-Uffink Relation: H(A) + H(B) > -log(c), c= max overlap
+	make/o/n=200 thy_lhs_proj
+	variable theta_f_min=0, theta_f_max = 1 // units of pi
+	setscale/i x, theta_f_min, theta_f_max, thy_lhs_proj
+
+	// the maximization over eigenstates changes at pi/2 from i=f to i=-f
+	// it is simply implemented by a flag of tf > pi/2
+	duplicate/o thy_lhs_proj flag_pm
+	flag_pm = 0.5+0.5*sign(x-0.5)
+	
+	// the relation is: 0.5 \pm 0.5 cos(tf)
+	thy_lhs_proj = 0.5*( 1 -(-1)^(flag_pm)*cos(x*pi))
+	
+end

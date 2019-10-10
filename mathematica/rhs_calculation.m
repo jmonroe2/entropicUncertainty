@@ -60,6 +60,15 @@ LabelStyle\[Rule] Large, AxesLabel\[Rule]{Subscript[\[Theta],"a"],Subscript[\[Th
 LabelStyle\[Rule] Large, AxesLabel\[Rule]{Subscript[\[Theta],"a"],Subscript[\[Theta],f],"Subscript[Subscript[RHS^(T1), both],  ] "}]*)
 
 
+Monitor[
+Table[h[ta*Pi,tf*Pi],
+{ta,0.01,2.,0.1},{tf,0.01,1.,0.1}],
+ProgressIndicator[ta/2*100 +tf*10,{0,111}] ];
+RHSData = %;
+Export["/Users/jmonroe/Projects/entropicUncertainty/mathematica/RHS.txt", ExportString[Re[RHSData],"RawJSON","Compact"->True]]
+ListPlot3D[RHSData]
+
+
 
 
 
@@ -75,4 +84,7 @@ mn = MinValue[ h[x*Pi,(0.5 +a/15)Pi], x]
 
 
 
-h[0.4 Pi,0.5 Pi]
+Table[i,{i, 0.01,1.,0.1}]
+
+
+Plot[g$r[1,-1,x Pi, 0.5 Pi], {x,0,1}]
