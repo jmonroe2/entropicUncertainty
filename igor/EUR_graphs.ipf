@@ -851,39 +851,98 @@ EndMacro
 
 Window graph_tightness() : Graph
 	PauseUpdate; Silent 1		// building window...
-	Display /W=(448,320,953,711)
-	AppendImage/T tmp_2d
-	ModifyImage tmp_2d ctab= {0,4,RedWhiteBlue,1}
-	ModifyGraph margin(left)=37,margin(bottom)=14,margin(top)=31,margin(right)=14
+	Display /W=(436,130,913,488)
+	AppendImage/T tightness_single_slice
+	ModifyImage tightness_single_slice ctab= {1,2,Geo,0}
+	ModifyGraph margin(left)=50,margin(bottom)=14,margin(top)=52,margin(right)=14
 	ModifyGraph mirror=2
-	ModifyGraph nticks(left)=4
+	ModifyGraph nticks(left)=2,nticks(top)=3
 	ModifyGraph minor=1
-	ModifyGraph fSize=12
+	ModifyGraph fSize=15
+	ModifyGraph lblMargin(top)=2
 	ModifyGraph standoff=0
+	ModifyGraph lblLatPos(top)=3
 	ModifyGraph tkLblRot(left)=90
 	ModifyGraph btLen=3
 	ModifyGraph tlOffset=-2
-	Label left "\\Zr150\\[0 θ\\BF\\M [π]\\]0"
-	Label top "\\Zr150\\[0 θ\\Bρ\\M [π]\\]0"
-	ColorScale/C/N=text0/F=0/B=1/A=RT/X=33.70/Y=78.32 image=tmp_2d, vert=0
-	ColorScale/C/N=text0 widthPct=20
-	AppendText "\\Zr150Tightness [bits]"
-	TextBox/C/N=t0/X=1.13/Y=1.95 "\\Zr150\\[0θ\\Ba\\M =1.99π\\]0"
-
-	Display /W=(218,166,613,374) tightness_hist
-	ModifyGraph mode=6
-	ModifyGraph lblMargin(bottom)=4
-	Label left "\\Zr150 Counts"
-	Label bottom "\\Zr150 LHS-RHS [bits]"
-	TextBox/C/N=t0/X=-3.27/Y=2.01 "\\Zr130\\[0 All configurations of {θ\\BF\\M, θ\\BA\\M, θ\\Bρ\\M}"
-
-	Display /W=(15,328,410,536) tmp_2d[0][*],tmp_2d[1][*],tmp_2d[2][*]
-	ModifyGraph mode=3
-	ModifyGraph rgb(tmp_2d#1)=(0,0,0),rgb(tmp_2d#2)=(1,16019,65535)
-	ModifyGraph lblMargin(bottom)=2
-	ModifyGraph lblLatPos(bottom)=-1
-	Label left "\\Zr180 LHS-RHS"
-	Label bottom "\\Zr180\\[0 θ\\BF\\M [π]\\]0"
-	SetAxis bottom 0,1.1
-	TextBox/C/N=t0/F=0/B=1/X=-2.31/Y=47.14 "\\Zr140\\[0\r\t \\s(tmp_2d) 0.01 π\r θ\\Bρ\\M =\t \\s(tmp_2d#1) 0.02 π\t\r\t \\s(tmp_2d#2) 0.03 π\r θ\\Ba\\M = 1.99 π"
+	Label left "\\Zr150\\[0\rθ\\BF\\M [π]\\]0"
+	Label top "\\Zr150\\[0\rθ\\BA\\M [π]\\]0"
+	SetAxis left 0.4,0.6
+	SetAxis top 1,0
+	Cursor/P/I A tightness_single_slice 13,8
+	ShowInfo
+	TextBox/C/N=t0/X=1.69/Y=1.66 "\\Zr150\\[0\rθ\\Bρ\\M=π/100\\]0"
+	ColorScale/C/N=text0/A=RT/X=66.18/Y=2.38 image=tightness_single_slice, vert=0
+	ColorScale/C/N=text0 widthPct=30
+	AppendText "\\Zr150 LHS-RHS"
+	ModifyGraph swapXY=1
 EndMacro
+
+
+Window graph_check_prob() : Graph
+	PauseUpdate; Silent 1		// building window...
+	Display /W=(350,428,745,636) prob_j_vs_thetaRho[*][15],prob_j_vs_thetaRho[*][5],pj_A_pi4_rho_0p5_math_v2
+	AppendToGraph pj_A_pi4_rho_m0p5_math_v2
+	ModifyGraph mode(prob_j_vs_thetaRho)=3,mode(prob_j_vs_thetaRho#1)=3
+	ModifyGraph lSize=2
+	ModifyGraph rgb(prob_j_vs_thetaRho)=(16385,28398,65535),rgb(prob_j_vs_thetaRho#1)=(52428,1,1)
+	ModifyGraph rgb(pj_A_pi4_rho_0p5_math_v2)=(52428,1,1),rgb(pj_A_pi4_rho_m0p5_math_v2)=(16385,28398,65535)
+	ModifyGraph fSize=12
+	ModifyGraph lblMargin(left)=8
+	ModifyGraph axOffset(left)=1
+	ModifyGraph lblLatPos(left)=1
+	Label left "\\Zr150\\[0\rP(j)\r\\]0"
+	Label bottom "\\Zr150\\[0\rj\r\\]0"
+	SetAxis bottom -15,15
+	TextBox/C/N=text0/X=-8.96/Y=-2.84 "\\Zr150\\[0\rθ\\BA\\M =π/4\r\\s(prob_j_vs_thetaRho) θ\\Bρ\\M = +π/2\r\\s(prob_j_vs_thetaRho#1) θ\\Bρ\\M = -π/2\r\\]0"
+	AppendText "\\s(pj_A_pi4_rho_0p5_math_v2) Math.\r\\s(pj_A_pi4_rho_m0p5_math_v2) "
+EndMacro
+
+Window graph_RHS_single_run() : Graph
+	PauseUpdate; Silent 1		// building window...
+	Display /W=(530,45,897,208) RHS_value[*][0],RHS_value[*][3],RHS_value[*][1],RHS_value[*][2]
+	ModifyGraph rgb(RHS_value)=(0,65535,65535),rgb(RHS_value#1)=(16385,28398,65535)
+	ModifyGraph rgb(RHS_value#2)=(39321,1,1)
+	ModifyGraph lblMargin(bottom)=2
+	ModifyGraph lblLatPos(left)=7,lblLatPos(bottom)=-2
+	Label left "\\Z15\\[0\rRHS (single θ\\Bf\\M, θ\\Ba\\M)"
+	Label bottom "\\Z15 Record, j "
+	SetAxis left 0,25
+	Legend/C/N=text0/J/H={0,2,10}/A=MC/X=-39.83/Y=-4.55 "\\Z15\r\t i,f\r\\s(RHS_value) ++\r\\s(RHS_value#1) --\r\\s(RHS_value#2) +-\r\\s(RHS_value#3) -+"
+	TextBox/C/N=t0/X=3.39/Y=0.91 "\\Z12\\[0θ\\Bf\\M= 0.5π\rθ\\Ba\\M= 0.4π\\]0"
+EndMacro
+
+function convert_3d_to_gif(in_wave_3d,target_wave)
+	// before running; create graph with labels and (fixed) color map
+	wave in_wave_3d, target_wave
+	variable i, target_index=0
+	
+	// loop through each slice of image; update labels; save as .png
+	for (i=0; i<dimsize(target_wave,target_index); i+=1)
+		// get single slice
+		target_wave[][] = in_wave_3d[i][p][q]
+		doUpdate
+		
+		// update label
+		variable x_scale = indexToScale(in_wave_3d,i,target_index)
+		// round by 2 digits.
+		variable decimal = mod(x_scale,0.01)
+		x_scale += decimal
+		x_scale -= mod(x_scale,0.01)
+		string tt = num2str( x_scale )
+		textbox/c/n=t314159 "\Zr150\[0θ\Ba\M ="+tt+"π\]0"
+		
+		// create file name
+		string file_name="gif_00.png"
+		string i_str = num2str(i)
+		if (strlen(i_str)<2)
+			i_str = "0"+i_str
+		endif
+		variable start_index = strlen("gif_")
+		file_name[start_index, start_index+1] = i_str
+
+		// save output
+		Sleep 00:00:00.1
+		//SavePICT/O/P=igor_1/E=-5/B=144/I/W=(0,0,8.8,7) as file_name		
+	endfor
+end 
